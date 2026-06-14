@@ -137,5 +137,5 @@ All distances agreed on every instance (correctness cross-check ✓).
 
 | Name | Student ID | Contribution |
 |---|---|---|
-| [Nama Lengkap] | [NIM] | All components (graph, Dijkstra, Bellman-Ford, benchmark, tests, demo) |
+| Leyan Harits Rambang Wicaksana | 5025231288 | All components (graph, Dijkstra, Bellman-Ford, benchmark, tests, demo) |
 
