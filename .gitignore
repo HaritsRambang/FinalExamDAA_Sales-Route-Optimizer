@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Testing
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.code-workspace
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# AI tools — exclude all traces
+.gemini/
+.cursor/
+.cursorignore
+.cursorindexingignore
+.cursorrules
+.copilot/
+.github/copilot/
+.aider*
+.codeium/
+.continue/
+.tabnine*
+.cody/
+.windsurf/
+.bolt/
+.v0/
+.anthropic/
+.claude/
+.ai/
+.codex/
+.supermaven/
+cursor-tutor/
+.augment/
+
+# Report (generated, not part of source)
+report/
+generate_report.py
