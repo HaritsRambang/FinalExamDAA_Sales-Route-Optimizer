@@ -2,7 +2,7 @@
 
 **EF234405 Design & Analysis of Algorithms — Final Exam Capstone Project**
 
-A real-world shortest-path solver for delivery/sales routing, implemented on
+A real-world shortest path solver for sales routing, implemented on
 Surabaya's road network. Compares **Dijkstra** (Algorithm A) against
 **Bellman-Ford** (Algorithm B) on the same problem instances.
 
