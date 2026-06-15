@@ -54,7 +54,7 @@ sales-route-optimizer/
 ### 1. Clone & install dependencies
 
 ```bash
-git clone https://github.com/<your-username>/sales-route-optimizer.git
+git clone https://github.com/HaritsRambang/FinalExamDAA_Sales-Route-Optimizer
 cd sales-route-optimizer
 pip install -r requirements.txt
 ```
