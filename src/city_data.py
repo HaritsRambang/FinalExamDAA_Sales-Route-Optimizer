@@ -14,10 +14,6 @@ import math
 from src.graph import Graph
 
 
-# ---------------------------------------------------------------------------
-# Haversine distance (km) between two GPS coordinates
-# ---------------------------------------------------------------------------
-
 def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     """Great-circle distance in km between two (lat, lon) points."""
     R = 6371.0
@@ -28,17 +24,7 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
-# ---------------------------------------------------------------------------
-# Road detour factor: straight-line distance × factor ≈ actual road distance.
-# Urban areas typically have a factor of 1.3–1.4 due to road curvature,
-# intersections, and non-direct routes.  1.35 is a standard estimate.
-# ---------------------------------------------------------------------------
 ROAD_DETOUR_FACTOR = 1.35
-
-
-# ---------------------------------------------------------------------------
-# Node data: (name, latitude, longitude)
-# ---------------------------------------------------------------------------
 
 SURABAYA_NODES: list[tuple[str, float, float]] = [
     # idx  name                          lat        lon
@@ -64,62 +50,51 @@ SURABAYA_NODES: list[tuple[str, float, float]] = [
     ("Bungkul Park",                 -7.291310, 112.739817),  # 19
 ]
 
-# ---------------------------------------------------------------------------
-# Edge data: (node_idx_a, node_idx_b)  — undirected road connections
-# Weights are computed from haversine distances (km).
-# ---------------------------------------------------------------------------
+
 
 SURABAYA_EDGES: list[tuple[int, int]] = [
-    # Central area
+
     (0, 1), (0, 2), (0, 17), (0, 18),
     (1, 5), (1, 10), (1, 12),
     (2, 3), (2, 4), (2, 17),
     (3, 4), (3, 13),
     (4, 17), (4, 12),
-    # North / port
+
     (5, 10), (5, 16),
-    # South / malls
+
     (6, 7), (6, 9), (6, 11),
     (7, 9), (7, 19),
-    # Airport connections (Juanda → Waru → south malls)
+
     (8, 14), (8, 15),
     (9, 19), (9, 7),
     (10, 12), (10, 1),
-    # Connect Pakuwon (11) into south cluster + central
+
     (11, 6), (11, 15), (11, 9),
     (12, 1), (12, 17),
     (13, 16), (13, 3),
     (14, 15), (14, 8),
-    # Connect Waru cluster to south malls → central
+
     (15, 6), (15, 14), (15, 9),
     (16, 5), (16, 13),
     (17, 18), (17, 0),
     (18, 0), (18, 17),
     (19, 7), (19, 9),
-    # Bridge gaps: south cluster → central
+
     (6, 0), (9, 0), (7, 2),
 ]
 
 
 def build_surabaya_graph() -> Graph:
-    """
-    Construct and return the Surabaya road-network Graph.
 
-    Vertices  = major landmarks / intersections
-    Edges     = road connections (undirected)
-    Weights   = haversine distance × road detour factor (1.35),
-                approximating actual road distance in km
-                (rounded to 1 decimal place)
-    """
     n = len(SURABAYA_NODES)
     g = Graph(n, directed=False)
 
-    # Register labels and coordinates
+
     for i, (name, lat, lon) in enumerate(SURABAYA_NODES):
         g.set_label(i, name)
         g.set_coord(i, lat, lon)
 
-    # Add edges with road-adjusted haversine weights
+
     added: set[tuple[int, int]] = set()
     for u, v in SURABAYA_EDGES:
         key = (min(u, v), max(u, v))
@@ -135,7 +110,7 @@ def build_surabaya_graph() -> Graph:
 
 
 def node_index(name: str) -> int:
-    """Return the index of a node by name (case-insensitive partial match)."""
+
     name_lower = name.lower()
     for i, (n, _, _) in enumerate(SURABAYA_NODES):
         if name_lower in n.lower():
