@@ -1,6 +1,6 @@
 # Sales Route Optimizer
 
-**EF234405 Design & Analysis of Algorithms — Final Exam Capstone Project**
+**EF234405 Design & Analysis of Algorithms — Final Exam**
 
 A real-world shortest path solver for sales routing, implemented on
 Surabaya's road network. Compares **Dijkstra** (Algorithm A) against
