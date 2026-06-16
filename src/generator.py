@@ -1,12 +1,3 @@
-"""
-generator.py — Random weighted graph generator for benchmarking.
-
-Generates reproducible sparse connected graphs that simulate road networks:
-- Random geometric graph (vertices placed in 2-D space, edges between nearby nodes)
-- All edge weights are Euclidean distances (non-negative), realistic for road data
-- Ensures connectivity via a random spanning tree before adding extra edges
-"""
-
 from __future__ import annotations
 import math
 import random
@@ -24,27 +15,7 @@ def generate_random_graph(
     directed: bool = False,
     coord_scale: float = 1000.0,
 ) -> Graph:
-    """
-    Generate a random connected weighted graph with n vertices.
 
-    Strategy:
-    1. Place n vertices uniformly in [0, coord_scale]^2.
-    2. Build a random spanning tree (guarantees connectivity).
-    3. Add random extra edges until the average degree ≈ avg_degree.
-    Edge weights = Euclidean distance between the two endpoint coordinates.
-
-    Parameters
-    ----------
-    n           : number of vertices
-    avg_degree  : target average out-degree (controls density)
-    seed        : random seed for reproducibility
-    directed    : if True, edges are directed
-    coord_scale : coordinate bounding box size
-
-    Returns
-    -------
-    A connected Graph object.
-    """
     rng = random.Random(seed)
 
     g = Graph(n, directed=directed)
@@ -97,11 +68,7 @@ def generate_graphs_for_benchmark(
     avg_degree: float = 5.0,
     base_seed: int = 42,
 ) -> list[tuple[int, Graph]]:
-    """
-    Generate one graph per size in 'sizes', each with a distinct seed.
 
-    Returns list of (n, graph) pairs.
-    """
     result = []
     for i, n in enumerate(sizes):
         g = generate_random_graph(n, avg_degree=avg_degree, seed=base_seed + i)
