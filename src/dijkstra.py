@@ -23,28 +23,9 @@ def dijkstra(
     g: Graph,
     source: int,
 ) -> tuple[list[float], list[Optional[int]]]:
-    """
-    Run Dijkstra's algorithm from 'source' on graph 'g'.
 
-    Parameters
-    ----------
-    g      : weighted Graph (all edge weights must be ≥ 0)
-    source : starting vertex (depot / warehouse)
-
-    Returns
-    -------
-    dist   : dist[v] = shortest-path distance from source to v
-             (INF if v is unreachable)
-    prev   : prev[v] = predecessor of v on a shortest path
-             (None if v == source or unreachable)
-
-    Raises
-    ------
-    ValueError : if any edge weight is negative
-    """
     n = g.num_vertices()
 
-    # Validate non-negative weights (Dijkstra's invariant)
     for edge in g.edges:
         if edge.w < 0:
             raise ValueError(
@@ -56,7 +37,6 @@ def dijkstra(
     prev: list[Optional[int]] = [None] * n
     dist[source] = 0.0
 
-    # Min-heap entries: (tentative_distance, vertex)
     heap: list[tuple[float, int]] = [(0.0, source)]
 
     while heap:
@@ -66,7 +46,6 @@ def dijkstra(
         if d_u > dist[u]:
             continue
 
-        # Relax all edges leaving u
         for v, w in g.neighbours(u):
             alt = dist[u] + w
             if alt < dist[v]:
@@ -78,15 +57,7 @@ def dijkstra(
 
 
 def reconstruct_path(prev: list[Optional[int]], source: int, target: int) -> list[int]:
-    """
-    Reconstruct the shortest path from source to target using the
-    predecessor array returned by dijkstra().
 
-    Returns
-    -------
-    path : list of vertices from source to target (inclusive),
-           or [] if target is unreachable.
-    """
     path: list[int] = []
     node: Optional[int] = target
     while node is not None:
@@ -95,9 +66,9 @@ def reconstruct_path(prev: list[Optional[int]], source: int, target: int) -> lis
             break
         node = prev[node]
     else:
-        return []          # target was unreachable (prev chain never reached source)
+        return []      
 
     path.reverse()
     if path[0] != source:
-        return []          # disconnected graph
+        return []        
     return path
