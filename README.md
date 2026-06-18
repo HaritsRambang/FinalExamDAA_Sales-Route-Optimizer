@@ -128,5 +128,5 @@ All distances agreed on every instance (correctness cross-check ✓).
 
 | Name | Student ID | Contribution |
 |---|---|---|
-| Leyan Harits Rambang Wicaksana | 5025231288 | All components (graph, Dijkstra, Bellman-Ford, benchmark, tests, demo) |
+| Leyan Harits Rambang Wicaksana | 5025231288 | All components: graph data structure, Dijkstra implementation, Bellman-Ford implementation, Surabaya road network data, random graph generator, benchmark harness, correctness tests, report writing |
 
