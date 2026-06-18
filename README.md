@@ -116,15 +116,6 @@ All distances agreed on every instance (correctness cross-check ✓).
 
 ---
 
-## Language & Tools
-
-- **Python 3.10+**
-- `heapq` — Python standard library binary min-heap (supporting structure only; SSSP logic is written from scratch)
-- `matplotlib`, `numpy` — plotting only
-- `pytest` — test runner
-
----
-
 ## Attribution
 
 - Surabaya node coordinates: manually curated from Google Maps / OpenStreetMap data.
