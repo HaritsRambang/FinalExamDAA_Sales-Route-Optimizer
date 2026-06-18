@@ -31,18 +31,18 @@ weights are road distances in km (Euclidean / Haversine approximations).
 ```
 sales-route-optimizer/
 ├── src/
-│   ├── graph.py          # Weighted graph (adjacency list)
-│   ├── dijkstra.py       # Algorithm A — Dijkstra (binary heap)
-│   ├── bellman_ford.py   # Algorithm B — Bellman-Ford
-│   ├── generator.py      # Random connected graph generator
-│   └── city_data.py      # Real Surabaya road network (20 nodes, 36 edges)
+│   ├── graph.py         
+│   ├── dijkstra.py     
+│   ├── bellman_ford.py  
+│   ├── generator.py     
+│   └── city_data.py     
 ├── tests/
-│   └── test_correctness.py  # 18 correctness + cross-check tests
+│   └── test_correctness.py  
 ├── results/
 │   ├── benchmark_results.csv
 │   └── runtime_plot.png
-├── demo.py               # Interactive CLI demo (Surabaya network)
-├── benchmark.py          # One-command benchmark harness
+├── demo.py              
+├── benchmark.py          
 ├── requirements.txt
 └── README.md
 ```
